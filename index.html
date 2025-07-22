@@ -29,21 +29,12 @@
     <body>
         <header class="header-juego">
             <div class="header-contenido">
-                <img
-                    src="assets/images/favicons/favicon.ico"
-                    alt="Logo Minesweeper"
-                    class="logo-header"
-                />
-                <div>
-                    <h1 class="titulo-juego">Minesweeper UAI</h1>
-                    <h2 class="descripcion-juego">
-                        Proyecto Final de DAW - Minesweeper 2025
-                    </h2>
-                    <p class="instrucciones-juego">
-                        Haz clic en las casillas para descubrirlas. Si haces
-                        clic en una mina, ¡perderás! <b>¡Buena suerte!</b>
-                    </p>
-                </div>
+                <h1 class="titulo-juego">Minesweeper UAI</h1>
+                
+                <h2 class="descripcion-juego">
+                    Proyecto Final de DAW - Minesweeper 2025
+                </h2>
+                <button class="btn-naturaleza" id="boton-tema">🌙 Modo oscuro</button>
             </div>
         </header>
 
@@ -51,54 +42,91 @@
             <!-- El tablero, modales y panel de info se generan dinámicamente con JS -->
         </main>
 
+        <section id="estadisticas" class="seccion-estadisticas">
+            <h2 class="titulo-estadisticas">Ranking de Jugadores</h2>
+            <table class="tabla-ranking">
+                <thead class="columnas-ranking">
+                    <tr>
+                        <th>#</th>
+                        <th>Jugador</th>
+                        <th>Puntaje</th>
+                        <th>Duración</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="filas-ranking">
+                    <!-- Filas generadas con JavaScript -->
+                </tbody>
+            </table>
+
+            <div class="reiniciar-ranking">
+                <button
+                    id="btn-limpiar-ranking"
+                    class="btn-naturaleza terciario"
+                >
+                    Limpiar Ranking
+                </button>
+            </div>
+        </section>
+
         <section id="contacto" class="seccion-contacto">
-            <h2>Contacto</h2>
-            <form id="form-contacto" autocomplete="off" novalidate>
-                <div class="grupo-formulario">
-                    <label for="nombre-contacto">Nombre:</label>
+            <form
+                id="form-contacto"
+                autocomplete="off"
+                novalidate
+                class="form-naturaleza"
+            >
+                <h2>CONTACTO</h2>
+                <div class="grupo-entrada-naturaleza">
                     <input
                         type="text"
                         id="nombre-contacto"
                         name="nombre"
+                        required
                         minlength="3"
                         maxlength="40"
-                        required
+                        placeholder="Nombre Completo"
                     />
                 </div>
-                <div class="grupo-formulario">
-                    <label for="email-contacto">Email:</label>
+                <div class="grupo-entrada-naturaleza">
                     <input
                         type="email"
                         id="email-contacto"
                         name="email"
                         required
+                        placeholder="Email"
                     />
                 </div>
-                <div class="grupo-formulario">
-                    <label for="mensaje-contacto">Mensaje:</label>
+                <div class="grupo-entrada-naturaleza">
                     <textarea
                         id="mensaje-contacto"
                         name="mensaje"
                         rows="4"
                         maxlength="300"
                         required
+                        placeholder="Mensaje"
                     ></textarea>
                 </div>
-                <div class="botones-contacto">
-                    <button type="submit" id="enviar-contacto">Enviar</button>
-                    <button type="reset" id="reset-contacto">Limpiar</button>
+                <div class="fila-botones-naturaleza">
+                    <button type="submit" class="btn-naturaleza">
+                        Enviar mensaje
+                    </button>
+                    <button type="reset" class="btn-naturaleza secundario">
+                        Limpiar
+                    </button>
                 </div>
                 <div id="error-contacto" class="error-contacto"></div>
                 <div id="exito-contacto" class="exito-contacto"></div>
             </form>
         </section>
 
-        <footer class="footer-juego">
+        <footer id="footer" class="footer-juego">
             <div>
                 <p>
                     Desarrollado por Renzo Fascendini y Agustin Fretes – DAW UAI
-                    2025<span> | </span
-                    ><a
+                    2025
+                    <span> | </span>
+                    <a
                         href="https://github.com/rfascendini/UAI-DAW-2025-Buscaminas"
                         target="_blank"
                         >Ver en Github</a
@@ -109,5 +137,6 @@
 
         <!-- JS -->
         <script src="assets/js/scripts.js"></script>
+        <script src="assets/js/ranking.js"></script>
     </body>
 </html>
