@@ -1,0 +1,131 @@
+ * {
+      transition: all 1s;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+      font-family: calibri;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      background: rgb(181, 193, 209);
+    }
+
+    table {
+      background: rgb(0, 0, 0);
+      margin: 100px auto;
+    }
+
+    td {
+    border: rgba(245, 5, 5, 25) 1px solid;
+    text-align: center;
+    font-size: 120%;
+    color: rgb(26, 27, 27);
+    }
+
+    #juego-nuevo,td,#minas,#timer {
+    box-shadow: inset 3px 3px 0 0 rgba(255, 255, 255, 0.5),
+        inset -3px -3px 0 0 rgba(85, 81, 81, 0.993);
+    }
+
+    #juego-nuevo,
+    #minas,
+    #timer{
+      padding: 10px;
+      margin: 10px;
+    }
+
+
+    #juego-nuevo {
+      background: rgb(231, 235, 232);
+      cursor: pointer;
+      letter-spacing: 3px;
+      font-family:fantasy;
+      border-radius: 20%;
+      width: 80px;
+      box-shadow: 1px 1px 0px 1px   rgb(17, 17, 17);;
+      
+
+
+    }
+    #juego-nuevo:active{
+        background: rgb(168, 182, 173);
+      color: rgb(206, 70, 70);
+      transition: background-color 0.5s ease;
+      
+    }
+
+    #minas {
+      background: black;
+      color: rgb(127, 218, 150);
+      width: 50px;
+      border-radius: 50%;
+    
+      
+    }
+    #timer{
+      background: black;
+      color: rgb(196, 61, 56);
+    
+    }
+
+    #Ajustes {
+      background: rgb(231, 235, 232);
+      cursor: pointer;
+      width:40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 3px 3px 3px 3px black;
+      
+      
+      
+        }
+  .tablero {
+    background: rgb(79, 170, 110);
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 3px 3px black;
+  margin:5px;
+
+
+
+  }
+  #dificultad{
+    text-align: center;
+    color: brown;
+    background-color: rgba(142, 209, 230, 0.87);
+    width:120px;
+    font-family: cursive;
+      box-shadow: 1px 1px 1px 1px black;
+      margin: 10px;
+  }
+
+.btn {
+  position: relative;
+  width: 120px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(26, 24, 24);
+  background: none;
+  border: 2px solid #646cff;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-family: cursive;
+}
+
+.liquid {
+  background: linear-gradient(#646cff 0 0) no-repeat calc(200% - var(--p, 0%))
+    100% / 200% var(--p, 0.2em);
+  transition: 0.3s var(--t, 0s),
+    background-position 0.3s calc(0.3s - var(--t, 0s));
+}
+
+.liquid:hover {
+  --p: 100%;
+  --t: 0.3s;
+  color: #fff;
+}

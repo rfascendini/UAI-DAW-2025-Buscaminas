@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css\style.css" >
+
+  </head>
+
+<body oncontextmenu="return false">
+  <div class=" tablero">
+
+      <p id="minas">
+  
+      </p>
+      <p id="juego-nuevo" onclick="nuevoJuego()">
+    New Game
+      </p>
+
+        <p id="timer">
+00
+        </p>
+
+      </div>
+
+    <table cellspacing="0" cellpadding="0" id="tablero">
+
+
+
+  
+    </table>
+
+    <form>
+  <select id="dificultad" >
+    <option value="1">FACIL</option>
+    <option value="2" >MEDIO</option>
+    <option value="3">DIFICIL</option>
+     <option value="4">MUYDIFICIL</option>
+  </select>
+</form>
+
+<button  class="btn  liquid " onclick="obtenervalor()"> Seleccionar </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
