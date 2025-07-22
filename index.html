@@ -1,29 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Proyecto Final de DAW - Minesweeper. Juego interactivo desarrollado para la materia Desarrollo y Arquitecturas Web de la UAI.">
-    <meta name="keywords" content="Minesweeper, Buscaminas, DAW, Desarrollo Web, Proyecto Final, UAI, Universidad Abierta Interamericana">
-    <meta name="author" content="Renzo Fascendini, Agustin Fretes">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Proyecto Final de DAW - Minesweeper. Juego interactivo desarrollado para la materia Desarrollo y Arquitecturas Web de la UAI."
+        />
+        <meta
+            name="keywords"
+            content="Minesweeper, Buscaminas, DAW, Desarrollo Web, Proyecto Final, UAI, Universidad Abierta Interamericana"
+        />
+        <meta name="author" content="Renzo Fascendini, Agustin Fretes" />
 
-    <title>UAI - DAW 2025 - Minesweeper</title>
+        <title>UAI - DAW 2025 - Minesweeper</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="assets/css/reset.css" />
+        <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicons/favicon.ico" type="image/x-icon">
-</head>
-<body>
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            href="assets/images/favicons/favicon.ico"
+            type="image/x-icon"
+        />
+    </head>
+    <body>
+        <header class="header-juego">
+            <div class="header-contenido">
+                <img
+                    src="assets/images/favicons/favicon.ico"
+                    alt="Logo Minesweeper"
+                    class="logo-header"
+                />
+                <div>
+                    <h1 class="titulo-juego">Minesweeper UAI</h1>
+                    <h2 class="descripcion-juego">
+                        Proyecto Final de DAW - Minesweeper 2025
+                    </h2>
+                    <p class="instrucciones-juego">
+                        Haz clic en las casillas para descubrirlas. Si haces
+                        clic en una mina, ¡perderás! <b>¡Buena suerte!</b>
+                    </p>
+                </div>
+            </div>
+        </header>
 
-    <main id="contenedor-juego" class="contenedor">
-        <!-- El tablero, modales y panel de info se generan dinámicamente con JS -->
-    </main>
+        <main id="contenedor-juego" class="contenedor">
+            <!-- El tablero, modales y panel de info se generan dinámicamente con JS -->
+        </main>
 
-    <!-- JS -->
-    <script src="assets/js/scripts.js"></script>
+        <section id="contacto" class="seccion-contacto">
+            <h2>Contacto</h2>
+            <form id="form-contacto" autocomplete="off" novalidate>
+                <div class="grupo-formulario">
+                    <label for="nombre-contacto">Nombre:</label>
+                    <input
+                        type="text"
+                        id="nombre-contacto"
+                        name="nombre"
+                        minlength="3"
+                        maxlength="40"
+                        required
+                    />
+                </div>
+                <div class="grupo-formulario">
+                    <label for="email-contacto">Email:</label>
+                    <input
+                        type="email"
+                        id="email-contacto"
+                        name="email"
+                        required
+                    />
+                </div>
+                <div class="grupo-formulario">
+                    <label for="mensaje-contacto">Mensaje:</label>
+                    <textarea
+                        id="mensaje-contacto"
+                        name="mensaje"
+                        rows="4"
+                        maxlength="300"
+                        required
+                    ></textarea>
+                </div>
+                <div class="botones-contacto">
+                    <button type="submit" id="enviar-contacto">Enviar</button>
+                    <button type="reset" id="reset-contacto">Limpiar</button>
+                </div>
+                <div id="error-contacto" class="error-contacto"></div>
+                <div id="exito-contacto" class="exito-contacto"></div>
+            </form>
+        </section>
 
-</body>
+        <footer class="footer-juego">
+            <div>
+                <p>
+                    Desarrollado por Renzo Fascendini y Agustin Fretes – DAW UAI
+                    2025<span> | </span
+                    ><a
+                        href="https://github.com/rfascendini/UAI-DAW-2025-Buscaminas"
+                        target="_blank"
+                        >Ver en Github</a
+                    >
+                </p>
+            </div>
+        </footer>
+
+        <!-- JS -->
+        <script src="assets/js/scripts.js"></script>
+    </body>
 </html>
