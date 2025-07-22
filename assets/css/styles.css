@@ -10,29 +10,35 @@
     --gris-claro: #f4f4f4;
     --gris-claro-par: #f2f6ef;
     --gris-claro-impar: #e5f1d9;
-    --rojo: #e63946;
     --negro: #000000;
     --negro-transparente: rgba(0, 0, 0, 0.87);
     --sombra-verde: rgba(101, 148, 74, 0.2);
-    --fondo-con-degrades: linear-gradient(to right, var(--piedra), var(--verde-pasto))
+    --fondo-con-degrades: linear-gradient(
+        to right,
+        var(--piedra),
+        var(--verde-pasto)
+    );
 }
 
 body.tema-oscuro {
-    --verde-pasto: #a6cf98;                  
-    --verde-hoja: #7bbf7d;                   
-    --tierra: #b79b74;                       
-    --rama: #ccb37a;                         
-    --piedra: #1e1e1e;                       
-    --blanco: #f0f0f0;                       
-    --blanco-transparente: rgba(240, 240, 240, 0.95); 
-    --gris-claro: #2e2e2e;                   
-    --gris-claro-par: #292f26;               
-    --gris-claro-impar: #1e2a1e;             
-    --rojo: #ef5a61;                         
+    --verde-pasto: #a6cf98;
+    --verde-hoja: #7bbf7d;
+    --tierra: #b79b74;
+    --rama: #ccb37a;
+    --piedra: #1e1e1e;
+    --blanco: #000000;
+    --blanco-transparente: rgba(240, 240, 240, 0.95);
+    --gris-claro: #2e2e2e;
+    --gris-claro-par: #292f26;
+    --gris-claro-impar: #1e2a1e;
     --negro: #ffffff;
     --negro-transparente: rgba(0, 0, 0, 0.87);
-    --sombra-verde: rgba(123, 191, 125, 0.2); 
-    --fondo-con-degrades: linear-gradient(to right, var(--piedra), var(--verde-pasto));
+    --sombra-verde: rgba(123, 191, 125, 0.2);
+    --fondo-con-degrades: linear-gradient(
+        to right,
+        var(--piedra),
+        var(--verde-pasto)
+    );
 }
 
 /* ======================== BASE ======================== */
@@ -76,6 +82,119 @@ body {
     color: var(--negro);
 }
 
+/* ======================== TABLERO ========================= */
+.contenedor-juego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contenedor-juego > table {
+    background: var(--blanco);
+}
+
+td {
+    border: 1px solid var(--verde-hoja);
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    color: var(--negro);
+    box-shadow: inset 3px 3px 0 0 var(--verde-pasto),
+        inset -3px -3px 0 0 var(--verde-hoja);
+}
+
+.tablero {
+    background: var(--verde-hoja);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    width: 100%;
+}
+
+/* === BOTONES Y PANELES SUPERIORES === */
+#juego-nuevo,
+#minas,
+#timer {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    max-width: 200px;
+    box-shadow: 0 0 0 2px var(--blanco);
+}
+
+#juego-nuevo:active {
+    background: var(--verde-pasto);
+    color: var(--rojo);
+    transition: background-color 0.5s ease;
+}
+
+#minas,
+#timer {
+    background: var(--blanco);
+    color: var(--negro);
+}
+
+/* === SELECT DIFICULTAD === */
+#dificultad {
+    appearance: none; /* Elimina el estilo por defecto del sistema */
+    text-align: center;
+    color: var(--negro);
+    background-color: var(--blanco);
+    width: 160px;
+    padding: 0.5rem;
+    font-family: cursive;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid var(--verde-hoja);
+    box-shadow: 0 2px 6px var(--sombra-verde);
+    border-radius: 4px;
+    margin: 1rem auto;
+    display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#dificultad:hover {
+    background-color: var(--gris-claro-par);
+}
+
+#dificultad:focus {
+    outline: none;
+    border-color: var(--verde-pasto);
+    box-shadow: 0 0 0 2px var(--sombra-verde);
+}
+
+/* === BOTÓN PRINCIPAL CON EFECTO LIQUID === */
+.btn {
+    position: relative;
+    width: 120px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--verde-hoja);
+    background: none;
+    border: 2px solid var(--verde-hoja);
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-family: cursive;
+}
+
+.liquid {
+    background: linear-gradient(var(--verde-hoja) 0 0) no-repeat
+        calc(200% - var(--p, 0%)) 100% / 200% var(--p, 0.2em);
+    transition: 0.3s var(--t, 0s),
+        background-position 0.3s calc(0.3s - var(--t, 0s));
+}
+
+.liquid:hover {
+    --p: 100%;
+    --t: 0.3s;
+    color: var(--blanco);
+}
+
 /* ======================== RANKING ======================== */
 .seccion-estadisticas {
     margin: 3rem auto 2rem auto;
@@ -99,7 +218,6 @@ body {
     width: 100%;
     border-collapse: collapse;
     background-color: var(--blanco);
-    box-shadow: 0 2px 6px var(--sombra-verde);
     border-radius: 10px;
     overflow: hidden;
     transition: background-color 0.3s;
@@ -111,6 +229,7 @@ body {
     text-align: center;
     border-bottom: 1px solid var(--gris-claro);
     font-size: 0.75em;
+    box-shadow: none;
 }
 
 .tabla-ranking th {
@@ -176,7 +295,6 @@ body {
     border-color: var(--verde-hoja);
     box-shadow: 0 0 0 2px var(--sombra-verde);
 }
-
 
 .form-naturaleza input,
 .form-naturaleza textarea {

@@ -18,6 +18,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/reset.css" />
         <link rel="stylesheet" href="assets/css/styles.css" />
+        <link rel="stylesheet" href="assets/css/tablero.css" />
 
         <!-- Favicon -->
         <link
@@ -30,16 +31,37 @@
         <header class="header-juego">
             <div class="header-contenido">
                 <h1 class="titulo-juego">Minesweeper UAI</h1>
-                
+
                 <h2 class="descripcion-juego">
                     Proyecto Final de DAW - Minesweeper 2025
                 </h2>
-                <button class="btn-naturaleza" id="boton-tema">🌙 Modo oscuro</button>
+                <button class="btn-naturaleza" id="boton-tema">
+                    🌙 Modo oscuro
+                </button>
             </div>
         </header>
 
-        <main id="contenedor-juego" class="contenedor">
-            <!-- El tablero, modales y panel de info se generan dinámicamente con JS -->
+        <main class="contenedor-juego">
+            <div class="tablero">
+                <p id="minas"></p>
+                <p id="juego-nuevo" class="btn-naturaleza primario" onclick="nuevoJuego()">Juego Nuevo</p>
+                <p id="timer">00:00</p>
+            </div>
+
+            <table id="tablero"></table>
+
+            <form>
+                <select id="dificultad">
+                    <option value="1">FACIL</option>
+                    <option value="2">MEDIO</option>
+                    <option value="3">DIFICIL</option>
+                    <option value="4">MUY DIFICIL</option>
+                </select>
+            </form>
+
+            <button class="btn liquid" onclick="obtenerValor()">
+                Seleccionar
+            </button>
         </main>
 
         <section id="estadisticas" class="seccion-estadisticas">
@@ -137,6 +159,7 @@
 
         <!-- JS -->
         <script src="assets/js/scripts.js"></script>
+        <script src="assets/js/tablero.js"></script>
         <script src="assets/js/ranking.js"></script>
     </body>
 </html>
