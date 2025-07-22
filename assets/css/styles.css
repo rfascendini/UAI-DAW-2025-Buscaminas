@@ -1,0 +1,266 @@
+/* ======================== VARIABLES ======================== */
+:root {
+    --verde-pasto: #8bb174;
+    --verde-hoja: #65944a;
+    --tierra: #b99568;
+    --rama: #7a6334;
+    --piedra: #d9dad3;
+    --blanco: #ffffff;
+    --blanco-transparente: rgba(255, 255, 255, 0.95);
+    --gris-claro: #f4f4f4;
+    --gris-claro-par: #f2f6ef;
+    --gris-claro-impar: #e5f1d9;
+    --rojo: #e63946;
+    --negro: #000000;
+    --negro-transparente: rgba(0, 0, 0, 0.87);
+    --sombra-verde: rgba(101, 148, 74, 0.2);
+    --fondo-con-degrades: linear-gradient(to right, var(--piedra), var(--verde-pasto))
+}
+
+body.tema-oscuro {
+    --verde-pasto: #a6cf98;                  
+    --verde-hoja: #7bbf7d;                   
+    --tierra: #b79b74;                       
+    --rama: #ccb37a;                         
+    --piedra: #1e1e1e;                       
+    --blanco: #f0f0f0;                       
+    --blanco-transparente: rgba(240, 240, 240, 0.95); 
+    --gris-claro: #2e2e2e;                   
+    --gris-claro-par: #292f26;               
+    --gris-claro-impar: #1e2a1e;             
+    --rojo: #ef5a61;                         
+    --negro: #ffffff;
+    --negro-transparente: rgba(0, 0, 0, 0.87);
+    --sombra-verde: rgba(123, 191, 125, 0.2); 
+    --fondo-con-degrades: linear-gradient(to right, var(--piedra), var(--verde-pasto));
+}
+
+/* ======================== BASE ======================== */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--piedra);
+    color: var(--negro);
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ======================== HEADER ======================== */
+.header-juego {
+    background: var(--fondo-con-degrades);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 3px solid var(--verde-hoja);
+}
+
+.header-contenido {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.titulo-juego {
+    font-size: 2.2rem;
+    color: var(--verde-hoja);
+    margin-bottom: 0.3rem;
+}
+
+.descripcion-juego {
+    font-size: 1.2rem;
+    color: var(--rama);
+    margin-bottom: 0.5rem;
+}
+
+.instrucciones-juego {
+    font-size: 1rem;
+    color: var(--negro);
+}
+
+/* ======================== RANKING ======================== */
+.seccion-estadisticas {
+    margin: 3rem auto 2rem auto;
+    padding: 1.5rem;
+    background: var(--piedra);
+    border-radius: 16px;
+    border: 2px solid var(--verde-pasto);
+    box-shadow: 0px 0px 25px 10px var(--sombra-verde);
+    color: var(--rama);
+    max-width: 900px;
+}
+
+.titulo-estadisticas {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    color: var(--verde-hoja);
+}
+
+.tabla-ranking {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--blanco);
+    box-shadow: 0 2px 6px var(--sombra-verde);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background-color 0.3s;
+}
+
+.tabla-ranking th,
+.tabla-ranking td {
+    padding: 0.7rem;
+    text-align: center;
+    border-bottom: 1px solid var(--gris-claro);
+    font-size: 0.75em;
+}
+
+.tabla-ranking th {
+    background-color: var(--verde-hoja);
+    color: var(--blanco);
+}
+
+.tabla-ranking tbody tr:nth-child(even) {
+    background-color: var(--gris-claro-par);
+}
+
+.tabla-ranking tbody tr:nth-child(odd) {
+    background-color: var(--gris-claro-impar);
+}
+
+.reiniciar-ranking {
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+.btn-naturaleza.terciario {
+    background: linear-gradient(45deg, #c1c0ab, #b2a486);
+    color: var(--negro);
+}
+
+/* ======================== CONTACTO ======================== */
+.seccion-contacto {
+    padding: 3rem 1.2rem;
+    background: var(--piedra);
+    transition: background-color 0.3s;
+}
+
+.seccion-contacto h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--verde-hoja);
+}
+
+.form-naturaleza {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 2px solid var(--verde-pasto);
+    box-shadow: 0px 0px 25px 10px var(--sombra-verde);
+    backdrop-filter: blur(4px);
+}
+
+.grupo-entrada-naturaleza {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--verde-pasto);
+    border-radius: 10px;
+    background-color: var(--gris-claro);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.grupo-entrada-naturaleza:focus-within {
+    border-color: var(--verde-hoja);
+    box-shadow: 0 0 0 2px var(--sombra-verde);
+}
+
+
+.form-naturaleza input,
+.form-naturaleza textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    font-family: inherit;
+    color: var(--blanco);
+    resize: none;
+}
+
+.form-naturaleza input:focus + label,
+.form-naturaleza input:not(:placeholder-shown) + label,
+.form-naturaleza textarea:focus + label,
+.form-naturaleza textarea:not(:placeholder-shown) + label {
+    top: -0.75rem;
+    font-size: 0.9rem;
+    background: var(--blanco);
+    padding: 0 0.4rem;
+    border-radius: 4px;
+}
+
+.fila-botones-naturaleza {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn-naturaleza {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blanco);
+    background: linear-gradient(45deg, var(--verde-hoja), var(--verde-pasto));
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.btn-naturaleza:hover {
+    background: linear-gradient(45deg, #4d7032, #7ba95a);
+    transform: scale(1.03);
+}
+
+.btn-naturaleza.secundario {
+    background: linear-gradient(45deg, #c1c0ab, #b2a486);
+    color: #2b2b2b;
+}
+
+.btn-naturaleza.secundario:hover {
+    background: linear-gradient(45deg, #a3a38c, #9b8e73);
+}
+
+/* ======================== FOOTER ======================== */
+.footer-juego {
+    background: var(--fondo-con-degrades);
+    color: var(--negro);
+    padding: 1rem 0.5rem;
+    box-shadow: 0 -2px 8px var(--sombra-verde);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: auto;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.footer-juego div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.footer-juego a {
+    color: var(--negro);
+    text-decoration: underline;
+}
+
+.footer-juego a:hover {
+    color: var(--verde-hoja);
+}
