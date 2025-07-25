@@ -8,15 +8,15 @@ var enJuego = true
 var juegoIniciado = false
 var marcas = 0
 var bandera = Boolean =false
-var segundos 
+var segundos =0 
 var intervalId
 var banderaintervalo =false
+
 
 document.oncontextmenu = function(){return false}
 
 // === FUNCIÓN PRINCIPAL ===
 nuevoJuego()
-
 
 
 function obtenerValor() {
@@ -32,7 +32,7 @@ function nuevoJuego() {
   generarTableroJuego()
   añadirEventos()
   refrescarTablero()
-  Tiempo(true , segundos)
+  Tiempo(true )
   
 }
 
@@ -41,18 +41,19 @@ function reiniciarVariables() {
   enJuego = true
   juegoIniciado = false
   
+
+  
 }
 
 function Tiempo(bandera , segundos)
 {
-    segundos =120 
-  if(bandera===false && segundos>0) 
-  {
     
 
+  if(bandera===false) 
+  {
     const Segundos=() =>{
     document.getElementById("timer").innerHTML=(segundos)
-        segundos = segundos - 1
+    segundos = segundos + 1
     
     }
     if(banderaintervalo===false)
@@ -63,14 +64,12 @@ function Tiempo(bandera , segundos)
     
 
   
-  }else if(bandera===true  || segundos <= 0)
+  }else if(bandera===true  )
   {
     
     clearInterval(intervSec);
-    banderaintervalo=false
-    
-  
-    
+    banderaintervalo=false 
+    document.getElementById("timer").innerHTML=0
   }
 }
 
@@ -123,7 +122,7 @@ function dobleClic(celda, c, f) {
   if (!enJuego) return
   abrirArea(c, f)
   refrescarTablero()
-  Tiempo(false , segundos)
+  Tiempo(false )
 }
 
 function clicSimple(celda, c, f, me) {
@@ -148,6 +147,8 @@ function clicSimple(celda, c, f, me) {
       }
       break
   }
+
+
 
   refrescarTablero()
   Tiempo(false , segundos)
@@ -178,7 +179,7 @@ function refrescarTablero() {
           celda.innerHTML = `<img src="assets/images/tablero/mina.png" alt="mina">`
           celda.style.color = "red"
           celda.style.background = "red"
-          Tiempo(true,segundos)
+          Tiempo(true)
         } else if (tablero[c][f].valor !== 0) {
           celda.innerHTML = tablero[c][f].valor
         }
@@ -208,6 +209,7 @@ function verificarGanador() {
     }
   }
   document.getElementById("tablero").style.background = "green"
+  Tiempo(true)
   enJuego = false
 
 }
@@ -217,6 +219,7 @@ function verificarPerdedor() {
     for (let c = 0; c < columnas; c++) {
       if (tablero[c][f].valor === -1 && tablero[c][f].estado === "descubierto") {
         enJuego = false
+         Tiempo(true)
       }
     }
   }
@@ -227,6 +230,7 @@ function verificarPerdedor() {
           const celda = document.getElementById(`celda-${c}-${f}`)
           celda.innerHTML = `<img src="assets/images/tablero/mina.png" alt="mina" class="bomba">`
           celda.style.background = "red"
+         Tiempo(true)
             
         }
       }

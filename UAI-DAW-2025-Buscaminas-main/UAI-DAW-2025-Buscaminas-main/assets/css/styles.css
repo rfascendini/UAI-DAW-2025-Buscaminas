@@ -81,7 +81,15 @@ body {
     font-size: 1rem;
     color: var(--negro);
 }
-
+/*
+.warnings{
+width: 200px;
+text-align: center;
+margin: auto;
+color: red;
+padding-top: 20px;
+}
+*/
 /* ======================== TABLERO ========================= */
 .contenedor-juego {
     display: flex;

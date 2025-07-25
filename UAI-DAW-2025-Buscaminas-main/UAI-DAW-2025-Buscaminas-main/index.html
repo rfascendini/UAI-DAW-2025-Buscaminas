@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="assets/css/reset.css" />
         <link rel="stylesheet" href="assets/css/styles.css" />
         <link rel="stylesheet" href="assets/css/tablero.css" />
+         <link rel="stylesheet" href="assets/sonidos/" />
 
         <!-- Favicon -->
         <link
@@ -45,7 +46,7 @@
             <div class="tablero">
                 <p id="minas"></p>
                 <p id="juego-nuevo" class="btn-naturaleza primario" onclick="nuevoJuego()">Juego Nuevo</p>
-                <p id="timer">00:00</p>  
+                <p id="timer">0</p>  
             </div>
 
             <table id="tablero"></table>
@@ -99,6 +100,7 @@
                 class="form-naturaleza"
             >
                 <h2>CONTACTO</h2>
+
                 <div class="grupo-entrada-naturaleza">
                     <input
                         type="text"
@@ -109,6 +111,7 @@
                         maxlength="40"
                         placeholder="Nombre Completo"
                     />
+                    <small class="error" id="error-nombre"></small>
                 </div>
                 <div class="grupo-entrada-naturaleza">
                     <input
@@ -118,6 +121,7 @@
                         required
                         placeholder="Email"
                     />
+                    <small class="error" id="error-email"></small>
                 </div>
                 <div class="grupo-entrada-naturaleza">
                     <textarea
@@ -128,18 +132,25 @@
                         required
                         placeholder="Mensaje"
                     ></textarea>
+                    <small class="error" id="error-mensaje"></small>
                 </div>
+
+
+
+
                 <div class="fila-botones-naturaleza">
-                    <button type="submit" class="btn-naturaleza">
+                    <button type="submit" id="submit" class="btn-naturaleza">
                         Enviar mensaje
                     </button>
                     <button type="reset" class="btn-naturaleza secundario">
                         Limpiar
                     </button>
+                    <p class="warnings" id="warnings>"></p>
                 </div>
                 <div id="error-contacto" class="error-contacto"></div>
                 <div id="exito-contacto" class="exito-contacto"></div>
             </form>
+
         </section>
 
         <footer id="footer" class="footer-juego">
@@ -161,5 +172,7 @@
         <script src="assets/js/scripts.js"></script>
         <script src="assets/js/tablero.js"></script>
         <script src="assets/js/ranking.js"></script>
+        <script src="assets/js/ranking.js"></script>
+        <script src="assets/js/validaciones.js"></script>
     </body>
 </html>
