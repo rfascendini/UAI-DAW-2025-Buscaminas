@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     reiniciarRanking();
     cargarRanking();
 
+
     var botonTema = document.getElementById("boton-tema");
 
     if (botonTema) {
@@ -13,11 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
             body.classList.toggle("tema-oscuro");
 
             if (body.classList.contains("tema-oscuro")) {
-                botonTema.textContent = "☀️ Modo claro";
+                botonTema.textContent = "Modo claro";
             } else {
-                botonTema.textContent = "🌙 Modo oscuro";
+                botonTema.textContent = "Modo oscuro";
             }
         });
     }
+
+
+    
 
 });

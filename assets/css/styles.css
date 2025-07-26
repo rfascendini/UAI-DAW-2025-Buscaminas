@@ -39,6 +39,16 @@ body.tema-oscuro {
         var(--piedra),
         var(--verde-pasto)
     );
+
+    background-image: url("../images/fondos/billy.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .seccion-contacto,
+    .seccion-estadisticas {
+        background-color: transparent;
+    }
 }
 
 /* ======================== BASE ======================== */
@@ -100,6 +110,7 @@ td {
     align-items: center;
     align-content: center;
     color: var(--negro);
+    background-color: var(--blanco);
     box-shadow: inset 3px 3px 0 0 var(--verde-pasto),
         inset -3px -3px 0 0 var(--verde-hoja);
 }
@@ -109,14 +120,48 @@ td {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
 /* === BOTONES Y PANELES SUPERIORES === */
+
+.botones-header {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.botones-header .btn-naturaleza {
+    flex: 1 1 auto;
+    min-width: 120px;
+    text-align: center;
+}
+
+/* --- Versión mobile: 2x2 --- */
+@media (max-width: 600px) {
+    .modal-contenido {
+        margin: 1rem;
+    }
+
+    .botones-header {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        max-width: 300px;
+        margin: 1rem auto;
+    }
+
+    .botones-header .btn-naturaleza {
+        width: 100%;
+    }
+}
+
 #juego-nuevo,
-#minas,
-#timer {
+#timer,
+#minas {
     text-align: center;
     padding: 10px;
     margin: 10px;
@@ -205,13 +250,6 @@ td {
     box-shadow: 0px 0px 25px 10px var(--sombra-verde);
     color: var(--rama);
     max-width: 900px;
-}
-
-.titulo-estadisticas {
-    text-align: center;
-    font-size: 1.7rem;
-    margin-bottom: 1.2rem;
-    color: var(--verde-hoja);
 }
 
 .tabla-ranking {
@@ -305,7 +343,7 @@ td {
     padding: 1rem;
     width: 100%;
     font-family: inherit;
-    color: var(--blanco);
+    color: var(--negro);
     resize: none;
 }
 
@@ -381,4 +419,49 @@ td {
 
 .footer-juego a:hover {
     color: var(--verde-hoja);
+}
+
+/* =============================== MODAL ============================== */
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+h2.modal-titulos {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    color: var(--verde-hoja);
+}
+
+.modal-contenido {
+    background: var(--blanco);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    color: var(--negro);
+    cursor: pointer;
+}
+
+.modal-seccion {
+    display: none; /* Se maneja desde JS */
 }
