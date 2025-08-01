@@ -1,152 +1,59 @@
 "use strict";
 
-// Función para cargar y mostrar el ranking
+document.addEventListener("DOMContentLoaded", function () {
+    cargarRanking(); // 🔹 Muestra el ranking actual
+    reiniciarRanking(); // 🔹 Agrega el evento al botón de limpiar
+
+});
+
 function cargarRanking() {
     var tablaRanking = document.getElementById("filas-ranking");
+    if (!tablaRanking) return;
 
-    // Verificar si hay datos en localStorage
-    var datosGuardados = localStorage.getItem("rankingJugadores");
+    tablaRanking.innerHTML = "";
 
-    // Si no hay, creamos uno ficticio
-    if (!datosGuardados) {
-        var jugadoresFicticios = [
-            {
-                nombre: "Renzo",
-                puntaje: 980,
-                duracion: "01:10",
-                fecha: "2025-07-01 14:23",
-            },
-            {
-                nombre: "Agustin",
-                puntaje: 950,
-                duracion: "01:22",
-                fecha: "2025-07-03 10:11",
-            },
-            {
-                nombre: "Lucía",
-                puntaje: 920,
-                duracion: "01:18",
-                fecha: "2025-07-04 08:45",
-            },
-            {
-                nombre: "Martín",
-                puntaje: 890,
-                duracion: "01:35",
-                fecha: "2025-07-05 16:55",
-            },
-            {
-                nombre: "Valentina",
-                puntaje: 870,
-                duracion: "01:27",
-                fecha: "2025-07-07 12:02",
-            },
-            {
-                nombre: "Julián",
-                puntaje: 850,
-                duracion: "01:40",
-                fecha: "2025-07-08 17:35",
-            },
-            {
-                nombre: "Emilia",
-                puntaje: 830,
-                duracion: "01:30",
-                fecha: "2025-07-09 09:15",
-            },
-            {
-                nombre: "Sofía",
-                puntaje: 810,
-                duracion: "01:50",
-                fecha: "2025-07-10 13:50",
-            },
-            {
-                nombre: "Diego",
-                puntaje: 790,
-                duracion: "02:00",
-                fecha: "2025-07-12 18:00",
-            },
-            {
-                nombre: "Camila",
-                puntaje: 770,
-                duracion: "01:45",
-                fecha: "2025-07-14 11:32",
-            },
-        ];
-        localStorage.setItem(
-            "rankingJugadores",
-            JSON.stringify(jugadoresFicticios)
-        );
-        datosGuardados = localStorage.getItem("rankingJugadores"); // actualizar
-    }
+    var datos = localStorage.getItem("rankingJugadores");
+    if (!datos) return mostrarFilaVacia(tablaRanking);
 
-    // Parsear
-    var ranking = JSON.parse(datosGuardados);
+    var ranking = JSON.parse(datos).filter(
+        (j) => j && j.nombre && typeof j.puntaje === "number"
+    );
 
-    // Ordenar por puntaje descendente
-    ranking.sort(function (a, b) {
-        return b.puntaje - a.puntaje;
-    });
+    if (ranking.length === 0) return mostrarFilaVacia(tablaRanking);
 
-    // Limpiar tabla anterior
-    while (tablaRanking.firstChild) {
-        tablaRanking.removeChild(tablaRanking.firstChild);
-    }
+    ranking.sort((a, b) => b.puntaje - a.puntaje);
 
-    // Limitar a 10
-    var limite = Math.min(ranking.length, 10);
-    for (var i = 0; i < limite; i++) {
-        var jugador = ranking[i];
-
-        console.log("Jugador:", jugador);
-
-        // Validación mínima
-        if (!jugador || !jugador.nombre) continue;
-
-        // Crear <tr>
+    ranking.slice(0, 10).forEach((j, i) => {
         var fila = document.createElement("tr");
-
-        var celdaPosicion = document.createElement("td");
-        celdaPosicion.textContent = i + 1;
-
-        var celdaNombre = document.createElement("td");
-        celdaNombre.textContent = jugador.nombre;
-
-        var celdaPuntaje = document.createElement("td");
-        celdaPuntaje.textContent = jugador.puntaje;
-
-        var celdaDuracion = document.createElement("td");
-        celdaDuracion.textContent = jugador.duracion;
-
-        var celdaFecha = document.createElement("td");
-        celdaFecha.textContent = jugador.fecha;
-
-        fila.appendChild(celdaPosicion);
-        fila.appendChild(celdaNombre);
-        fila.appendChild(celdaPuntaje);
-        fila.appendChild(celdaDuracion);
-        fila.appendChild(celdaFecha);
-
+        fila.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${j.nombre}</td>
+            <td>${j.puntaje}</td>
+            <td>${j.duracion}</td>
+            <td>${j.fecha}</td>
+        `;
         tablaRanking.appendChild(fila);
-    }
+    });
 }
 
+function mostrarFilaVacia(tabla) {
+    var fila = document.createElement("tr");
+    var celda = document.createElement("td");
+    celda.colSpan = 5;
+    celda.textContent = "No hay registros";
+    celda.style.textAlign = "center";
+    fila.appendChild(celda);
+    tabla.appendChild(fila);
+}
 
-// Botón para limpiar el ranking
 function reiniciarRanking() {
-    var btnLimpiarRanking = document.getElementById("btn-limpiar-ranking");
+    var btn = document.getElementById("btn-limpiar-ranking");
+    if (!btn) return;
 
-    if (btnLimpiarRanking) {
-        btnLimpiarRanking.addEventListener("click", function () {
-            var confirmar = confirm("¿Estás seguro que querés borrar el ranking?");
-            if (confirmar) {
-                // Eliminar del localStorage
-                localStorage.removeItem("rankingJugadores");
-
-                // Limpiar la tabla visualmente
-                var tablaRanking = document.getElementById("filas-ranking");
-                if (tablaRanking) {
-                    tablaRanking.innerHTML = "";
-                }
-            }
-        });
-    }
+    btn.addEventListener("click", () => {
+        if (confirm("¿Estás seguro que querés borrar el ranking?")) {
+            localStorage.removeItem("rankingJugadores");
+            cargarRanking(); // 🔹 Actualiza la tabla pero NO guarda nada
+        }
+    });
 }

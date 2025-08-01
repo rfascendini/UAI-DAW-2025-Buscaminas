@@ -1,23 +1,26 @@
+"use strict";
+
 // ====== VARIABLES DEL MODAL ======
-const modal = document.getElementById("modal");
-const modalCerrar = document.getElementById("modal-cerrar");
+var modal = document.getElementById("modal");
+var modalCerrar = document.getElementById("modal-cerrar");
 
 // Secciones internas del modal
-const modalContacto = document.getElementById("modal-contacto");
-const modalEstadisticas = document.getElementById("modal-estadisticas");
-const modalMensaje = document.getElementById("modal-mensaje");
+var modalContacto = document.getElementById("modal-contacto");
+var modalEstadisticas = document.getElementById("modal-estadisticas");
+var modalMensaje = document.getElementById("modal-mensaje");
+var modalNombre = document.getElementById("modal-nombre"); // Nuevo modal
 
 // Elementos para mensaje de victoria/derrota
-const tituloMensaje = document.getElementById("titulo-mensaje");
-const detalleMensaje = document.getElementById("detalle-mensaje");
-const cerrarMensajeBtn = document.getElementById("cerrar-mensaje");
+var tituloMensaje = document.getElementById("titulo-mensaje");
+var detalleMensaje = document.getElementById("detalle-mensaje");
+var cerrarMensajeBtn = document.getElementById("cerrar-mensaje");
 
-
-// ====== FUNCIONES PARA MOSTRAR MODAL ======
+// ====== FUNCIONES ======
 function ocultarTodasLasSecciones() {
-    modalContacto.style.display = "none";
-    modalEstadisticas.style.display = "none";
-    modalMensaje.style.display = "none";
+    var secciones = modal.querySelectorAll(".modal-seccion");
+    for (var i = 0; i < secciones.length; i++) {
+        secciones[i].style.display = "none";
+    }
 }
 
 function abrirModal() {
@@ -29,25 +32,26 @@ function cerrarModal() {
     ocultarTodasLasSecciones();
 }
 
-// Abrir modal con Contacto
+function abrirModalGenerico(seccion) {
+    ocultarTodasLasSecciones();
+    seccion.style.display = "block";
+    abrirModal();
+}
+
 function abrirModalContacto() {
-    ocultarTodasLasSecciones();
-    modalContacto.style.display = "block";
-    abrirModal();
+    abrirModalGenerico(modalContacto);
 }
 
-// Abrir modal con Ranking
 function abrirModalEstadisticas() {
-    ocultarTodasLasSecciones();
-    modalEstadisticas.style.display = "block";
-    abrirModal();
+    abrirModalGenerico(modalEstadisticas);
 }
 
-// Abrir modal con Mensaje de victoria o derrota
-function abrirModalMensaje(tipo, texto) {
-    ocultarTodasLasSecciones();
-    modalMensaje.style.display = "block";
+function abrirModalNombre() {
+    abrirModalGenerico(modalNombre);
+}
 
+function abrirModalMensaje(tipo, texto) {
+    abrirModalGenerico(modalMensaje);
     if (tipo === "victoria") {
         tituloMensaje.textContent = "¡Ganaste!";
         detalleMensaje.textContent = texto || "¡Felicitaciones! Has ganado la partida.";
@@ -55,30 +59,21 @@ function abrirModalMensaje(tipo, texto) {
         tituloMensaje.textContent = "¡Perdiste!";
         detalleMensaje.textContent = texto || "Has explotado una mina. ¡Intenta de nuevo!";
     }
-    abrirModal();
 }
 
 // ====== EVENTOS ======
 modalCerrar.addEventListener("click", cerrarModal);
 cerrarMensajeBtn.addEventListener("click", cerrarModal);
 
-// Cierra el modal si hacés clic fuera del contenido
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        cerrarModal();
-    }
+window.addEventListener("click", function (e) {
+    if (e.target === modal) cerrarModal();
 });
 
 var btnContacto = document.getElementById("btn-contacto");
-if (btnContacto) {
-    btnContacto.addEventListener("click", function () {
-        abrirModalContacto();
-    });
-}
+if (btnContacto) btnContacto.addEventListener("click", abrirModalContacto);
 
 var btnRanking = document.getElementById("btn-estadisticas");
-if (btnRanking) {
-    btnRanking.addEventListener("click", function () {
-        abrirModalEstadisticas();
-    });
-}
+if (btnRanking) btnRanking.addEventListener("click", abrirModalEstadisticas);
+
+// Exponer global
+window.abrirModalNombre = abrirModalNombre;

@@ -40,14 +40,25 @@ body.tema-oscuro {
         var(--verde-pasto)
     );
 
-    background-image: url("../images/fondos/billy.jpg");
+
+    background-image: url("../images/fondos/billy2.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
 
     .seccion-contacto,
     .seccion-estadisticas {
         background-color: transparent;
+    }
+}
+
+/* ====== MOBILE PROPERTIES PARA body.tema-oscuro ====== */
+@media (max-width: 600px) {
+    body.tema-oscuro {
+        background-image: url("../images/fondos/saw.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 }
 
@@ -140,7 +151,7 @@ td {
     text-align: center;
 }
 
-/* --- Versión mobile: 2x2 --- */
+
 @media (max-width: 600px) {
     .modal-contenido {
         margin: 1rem;
@@ -263,11 +274,10 @@ td {
 
 .tabla-ranking th,
 .tabla-ranking td {
-    padding: 0.7rem;
+    padding: 0.75rem;
     text-align: center;
-    border-bottom: 1px solid var(--gris-claro);
+    border: 0.5px solid var(--verde-hoja);
     font-size: 0.75em;
-    box-shadow: none;
 }
 
 .tabla-ranking th {
@@ -320,9 +330,6 @@ td {
 }
 
 .grupo-entrada-naturaleza {
-    position: relative;
-    display: flex;
-    align-items: center;
     border: 1.5px solid var(--verde-pasto);
     border-radius: 10px;
     background-color: var(--gris-claro);
@@ -389,6 +396,15 @@ td {
 
 .btn-naturaleza.secundario:hover {
     background: linear-gradient(45deg, #a3a38c, #9b8e73);
+}
+
+.error {
+    display: block;
+    margin-top: -15px;
+    text-align: left;   
+    color: #b00020;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 /* ======================== FOOTER ======================== */
