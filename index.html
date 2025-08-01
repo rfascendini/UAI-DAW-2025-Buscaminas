@@ -17,7 +17,6 @@
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/reset.css" />
         <link rel="stylesheet" href="assets/css/styles.css" />
-        <link rel="stylesheet" href="assets/css/tablero.css" />
 
         <!-- Favicon -->
         <link
@@ -34,27 +33,18 @@
                     Proyecto Final de DAW - Minesweeper 2025
                 </h2>
                 <div class="botones-header">
-                <button
-                    class="btn-naturaleza"
-                    id="btn-instrucciones"
-                >
-                    Instrucciones
-                </button>
-                <button
-                    class="btn-naturaleza"
-                    id="btn-contacto"
-                >
-                    Contacto
-                </button>
-                <button
-                    class="btn-naturaleza"
-                    id="btn-estadisticas"
-                >
-                    Ranking
-                </button>
-                <button class="btn-naturaleza" id="boton-tema">
-                    Modo oscuro
-                </button>
+                    <button class="btn-naturaleza" id="btn-instrucciones">
+                        Instrucciones
+                    </button>
+                    <button class="btn-naturaleza" id="btn-contacto">
+                        Contacto
+                    </button>
+                    <button class="btn-naturaleza" id="btn-estadisticas">
+                        Ranking
+                    </button>
+                    <button class="btn-naturaleza" id="boton-tema">
+                        Modo oscuro
+                    </button>
                 </div>
             </div>
         </header>
@@ -62,35 +52,62 @@
         <main class="contenedor-juego">
             <div class="tablero">
                 <p id="minas"></p>
-                <p
-                    id="juego-nuevo"
-                    class="btn-naturaleza primario"
-                >
+                <p id="juego-nuevo" class="btn-naturaleza primario">
                     Juego Nuevo
                 </p>
                 <p id="timer"></p>
             </div>
 
             <table id="tablero"></table>
-
-            <form>
-                <select id="dificultad">
-                    <option value="1">FÁCIL</option>
-                    <option value="2">MEDIO</option>
-                    <option value="3">DIFÍCIL</option>
-                    <option value="4">MUY DIFÍCIL</option>
-                </select>
-            </form>
-
-            <button class="btn liquid" onclick="obtenerValor()">
-                Seleccionar
-            </button>
         </main>
 
         <!-- Modal Reutilizable -->
         <div id="modal" class="modal">
             <div class="modal-contenido">
                 <span id="modal-cerrar" class="modal-cerrar">&times;</span>
+
+                <!-- Nombre -->
+                <!-- Nombre + Dificultad -->
+                <div id="modal-nombre" class="modal-seccion">
+                    <div class="form-naturaleza">
+                        <h2 class="modal-titulos">NUEVO JUEGO</h2>
+
+                        <!-- NOMBRE -->
+                        <div class="grupo-entrada-naturaleza">
+                            <input
+                                type="text"
+                                id="nombre-jugador"
+                                name="nombre-jugador"
+                                required
+                                minlength="3"
+                                maxlength="40"
+                                placeholder="Nombre Completo"
+                            />
+                        </div>
+                        <small class="error" id="error-nombre-jugador"></small>
+
+                        <!-- DIFICULTAD -->
+                        <div class="grupo-entrada-naturaleza">
+                            <select id="dificultad">
+                                <option value="1">FÁCIL</option>
+                                <option value="2">MEDIO</option>
+                                <option value="3">DIFÍCIL</option>
+                                <option value="4">MUY DIFÍCIL</option>
+                            </select>
+                        </div>
+
+                        <!-- BOTÓN -->
+                        <div class="fila-botones-naturaleza">
+                            <button
+                                type="button"
+                                id="btn-guardar-nombre"
+                                class="btn-naturaleza"
+                            >
+                                Comenzar
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Contacto -->
                 <div id="modal-contacto" class="modal-seccion">
@@ -101,6 +118,8 @@
                         class="form-naturaleza"
                     >
                         <h2 class="modal-titulos">CONTACTO</h2>
+
+                        <!-- NOMBRE -->
                         <div class="grupo-entrada-naturaleza">
                             <input
                                 type="text"
@@ -112,6 +131,9 @@
                                 placeholder="Nombre Completo"
                             />
                         </div>
+                        <small class="error" id="error-nombre"></small>
+
+                        <!-- EMAIL -->
                         <div class="grupo-entrada-naturaleza">
                             <input
                                 type="email"
@@ -121,6 +143,9 @@
                                 placeholder="Email"
                             />
                         </div>
+                        <small class="error" id="error-email"></small>
+
+                        <!-- MENSAJE -->
                         <div class="grupo-entrada-naturaleza">
                             <textarea
                                 id="mensaje-contacto"
@@ -131,9 +156,16 @@
                                 placeholder="Mensaje"
                             ></textarea>
                         </div>
+                        <small class="error" id="error-mensaje"></small>
+
+                        <!-- BOTONES -->
                         <div class="fila-botones-naturaleza">
-                            <button type="submit" class="btn-naturaleza">
-                                Enviar
+                            <button
+                                type="submit"
+                                id="submit"
+                                class="btn-naturaleza"
+                            >
+                                Enviar mensaje
                             </button>
                             <button
                                 type="reset"
@@ -142,6 +174,9 @@
                                 Limpiar
                             </button>
                         </div>
+
+                        <div id="error-contacto" class="error-contacto"></div>
+                        <div id="exito-contacto" class="exito-contacto"></div>
                     </form>
                 </div>
 
@@ -199,8 +234,9 @@
 
         <!-- JS -->
         <script src="assets/js/modal.js"></script>
-        <script src="assets/js/scripts.js"></script>
+        <script src="assets/js/validaciones.js"></script>
         <script src="assets/js/tablero.js"></script>
         <script src="assets/js/ranking.js"></script>
+        <script src="assets/js/scripts.js"></script>
     </body>
 </html>

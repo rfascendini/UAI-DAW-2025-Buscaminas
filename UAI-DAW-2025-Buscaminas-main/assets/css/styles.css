@@ -81,15 +81,7 @@ body {
     font-size: 1rem;
     color: var(--negro);
 }
-/*
-.warnings{
-width: 200px;
-text-align: center;
-margin: auto;
-color: red;
-padding-top: 20px;
-}
-*/
+
 /* ======================== TABLERO ========================= */
 .contenedor-juego {
     display: flex;
@@ -290,9 +282,6 @@ td {
 }
 
 .grupo-entrada-naturaleza {
-    position: relative;
-    display: flex;
-    align-items: center;
     border: 1.5px solid var(--verde-pasto);
     border-radius: 10px;
     background-color: var(--gris-claro);
@@ -359,6 +348,13 @@ td {
 
 .btn-naturaleza.secundario:hover {
     background: linear-gradient(45deg, #a3a38c, #9b8e73);
+}
+
+.error {
+    color: #b00020;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    font-weight: 500;
 }
 
 /* ======================== FOOTER ======================== */

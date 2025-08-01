@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="assets/css/reset.css" />
         <link rel="stylesheet" href="assets/css/styles.css" />
         <link rel="stylesheet" href="assets/css/tablero.css" />
-         <link rel="stylesheet" href="assets/sonidos/" />
+        <link rel="stylesheet" href="assets/sonidos/" />
 
         <!-- Favicon -->
         <link
@@ -45,8 +45,14 @@
         <main class="contenedor-juego">
             <div class="tablero">
                 <p id="minas"></p>
-                <p id="juego-nuevo" class="btn-naturaleza primario" onclick="nuevoJuego()">Juego Nuevo</p>
-                <p id="timer">0</p>  
+                <p
+                    id="juego-nuevo"
+                    class="btn-naturaleza primario"
+                    onclick="nuevoJuego()"
+                >
+                    Juego Nuevo
+                </p>
+                <p id="timer">0</p>
             </div>
 
             <table id="tablero"></table>
@@ -92,21 +98,22 @@
             </div>
         </section>
         <audio id="Sonido_perder">
-            <source  src="assets/sonidos/Sonido de decepción.mp3" type="audio/mp3">
-
-
+            <source
+                src="assets/sonidos/Sonido de decepción.mp3"
+                type="audio/mp3"
+            />
         </audio>
         <audio id="Sonido_ganar">
-            
-            <source  src="assets/sonidos/Sonido de Victoria.mp3" type="audio/mp3">
-
-
+            <source
+                src="assets/sonidos/Sonido de Victoria.mp3"
+                type="audio/mp3"
+            />
         </audio>
         <audio id="Sonido_bomba">
-            
-            <source  src="assets/sonidos/sonido Bomba.mp3" type="audio/mp3">
-
+            <source src="assets/sonidos/sonido Bomba.mp3" type="audio/mp3" />
         </audio>
+        
+        
         <section id="contacto" class="seccion-contacto">
             <form
                 id="form-contacto"
@@ -150,9 +157,6 @@
                     <small class="error" id="error-mensaje"></small>
                 </div>
 
-
-
-
                 <div class="fila-botones-naturaleza">
                     <button type="submit" id="submit" class="btn-naturaleza">
                         Enviar mensaje
@@ -165,7 +169,6 @@
                 <div id="error-contacto" class="error-contacto"></div>
                 <div id="exito-contacto" class="exito-contacto"></div>
             </form>
-
         </section>
 
         <footer id="footer" class="footer-juego">
@@ -186,7 +189,6 @@
         <!-- JS -->
         <script src="assets/js/scripts.js"></script>
         <script src="assets/js/tablero.js"></script>
-        <script src="assets/js/ranking.js"></script>
         <script src="assets/js/ranking.js"></script>
         <script src="assets/js/validaciones.js"></script>
     </body>
